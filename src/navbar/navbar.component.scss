@@ -1,0 +1,25 @@
+.navbar-container {
+  background-color: black;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  h4 {
+    color: white;
+  }
+  ul {
+    display: flex;
+    gap: 10px;
+    li {
+      background-color: white;
+      color: black;
+      padding: 8px;
+      border-radius: 5px;
+      list-style-type: none;
+    }
+    li:hover {
+        background-color: rgb(244, 147, 147);
+        color: white;
+        cursor: pointer;
+      }
+  }
+}
