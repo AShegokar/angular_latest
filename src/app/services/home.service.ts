@@ -11,4 +11,11 @@ export class HomeService {
   getProducts(): Observable<any> {
     return this.http.get('https://dummyjson.com/products');
   }
+
+  getPosts(): Observable<any>{
+    return this.http.get('https://dummyjson.com/posts');
+  }
+
+  
+
 }

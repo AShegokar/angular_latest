@@ -1,0 +1,20 @@
+<table class="table table-bordered border-primary">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Body</th>
+            <th>User ID</th>
+            <th>Tags</th>
+            <th>Reactions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr  *ngFor="let post of postList">
+            <td>{{post.title}}</td>
+            <td>{{post.body}}</td>
+            <td>{{post.userId}}</td>
+            <td>{{post.tags}}</td>
+            <td>{{post.reactions}}</td>
+        </tr>
+    </tbody>
+</table>

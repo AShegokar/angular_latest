@@ -1,13 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { HomeService } from 'src/app/services/home.service';
-
-interface Person {
-  id: number;
-  name: string;
-  country: string;
-  age: number;
-}
 
 interface Product {
   id: number;

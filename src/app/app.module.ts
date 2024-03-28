@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {HttpClientModule} from '@angular/common/http';
 import { HomeService } from './services/home.service';
+import { PostsComponent } from './posts/posts.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { HomeService } from './services/home.service';
     ContactComponent,
     WildCardComponent,
     NavbarComponent,
-    AboutComponent
+    AboutComponent,
+    PostsComponent
   ],
   imports: [
     BrowserModule,
