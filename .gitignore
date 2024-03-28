@@ -4,3 +4,4 @@
 #babel
 /dist/
 *.js.map
+/.angular/cache/

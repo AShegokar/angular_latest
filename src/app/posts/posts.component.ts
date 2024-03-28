@@ -19,7 +19,10 @@ getPostData(){
   this.postService.getPosts().subscribe((res: any) =>{
     this.postList = res.posts; 
   })
-  
 }
+
+  deletePostData(id:number){
+    this.postService.deletePost(id).subscribe();
+  }
 
 }

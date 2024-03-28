@@ -42,4 +42,8 @@ export class HomeComponent implements OnInit {
       this.productList = res.products;
     })
   }
+
+  deleteProduct(id: number) {
+    this.homeService.deleteProduct(id).subscribe();
+  }
 }

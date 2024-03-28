@@ -16,6 +16,13 @@ export class HomeService {
     return this.http.get('https://dummyjson.com/posts');
   }
 
+  deleteProduct(id: number): Observable<any> {
+    return this.http.delete(`https://dummyjson.com/products/${id}`);
+  }
+
+  deletePost(id:number):Observable<any>{
+    return this.http.delete(`https://dummyjson.com/posts/${id}`);
+  }
   
 
 }
