@@ -59,6 +59,9 @@ export class HomeComponent implements OnInit {
 
   onSubmit() {
     console.log(this.productForm?.value, "===");
+    const data = {...this.productForm.value, address: {city: 'Hyd', country: 'India'}}
+    this.homeService.addProduct(data).subscribe();
+    // this.homeService.addProduct(this.productForm.value).subscribe();
   }
 
   deleteProduct(id: number) {
