@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { HomeService } from 'src/app/services/home.service';
 
 interface Product {
@@ -30,17 +31,34 @@ export class HomeComponent implements OnInit {
   ];
 
   public productList: any;
+  public productForm!: FormGroup;
 
-  constructor(private homeService: HomeService) {}
+  constructor(private homeService: HomeService, private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.getProductsData();
+    this.getFormValues();
+  }
+
+  getFormValues () {
+    this.productForm = this.fb.group({
+      title: [''],
+      price: [''],
+      dp: [''],
+      rating:[''],
+      category: [''],
+      description: ['']
+    })
   }
 
   getProductsData() {
     this.homeService.getProducts().subscribe((res: any) => {
       this.productList = res.products;
     })
+  }
+
+  onSubmit() {
+    console.log(this.productForm?.value, "===");
   }
 
   deleteProduct(id: number) {
