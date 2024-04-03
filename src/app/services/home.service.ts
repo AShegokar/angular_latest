@@ -24,8 +24,12 @@ export class HomeService {
     return this.http.delete(`https://dummyjson.com/posts/${id}`);
   }
   
-  addProduct(product:any):Observable<any>{
+  addProduct(product:any): Observable<any>{
     return this.http.post('https://dummyjson.com/products/add',product);
+  }
+
+  addPost(post:any): Observable<any>{
+    return this.http.post('https://dummyjson.com/posts/add',post);
   }
 
 }
