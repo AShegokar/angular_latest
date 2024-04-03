@@ -32,6 +32,8 @@ export class HomeComponent implements OnInit {
 
   public productList: any;
   public productForm!: FormGroup;
+  selectedproduct: any;
+  public title: string = "";
 
   constructor(private homeService: HomeService, private fb: FormBuilder) {}
 
@@ -58,13 +60,37 @@ export class HomeComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.productForm?.value, "===");
-    const data = {...this.productForm.value, address: {city: 'Hyd', country: 'India'}}
-    this.homeService.addProduct(data).subscribe();
-    // this.homeService.addProduct(this.productForm.value).subscribe();
+    if(this.selectedproduct.id) {
+      this.homeService.updateProduct(this.productForm.value, this.selectedproduct.id).subscribe();
+      this.productForm.reset();
+    } else {
+      this.homeService.addProduct(this.productForm.value).subscribe();
+      this.productForm.reset();
+    }
+  }
+
+  updateproduct(selectedProduct: any) {
+    this.title = "Update product"
+    this.selectedproduct = selectedProduct;
+    this.productForm.patchValue({
+      title: selectedProduct.title,
+      price: selectedProduct.price,
+      dp: selectedProduct.discountPercentage,
+      rating: selectedProduct.rating,
+      category: selectedProduct.category,
+      description: selectedProduct.description
+    })
+  }
+
+  add(title : any){
+    this.title = title
   }
 
   deleteProduct(id: number) {
     this.homeService.deleteProduct(id).subscribe();
+  }
+
+  onClose() {
+    this.productForm.reset()
   }
 }
