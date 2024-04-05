@@ -36,4 +36,7 @@ export class HomeService {
     return this.http.put(`https://dummyjson.com/products/${id}`,product);
   }
 
+  updatePost(post:any, id:any): Observable<any>{
+    return this.http.put(`https://dummyjson.com/posts/${id}`, post);
+  }
 }

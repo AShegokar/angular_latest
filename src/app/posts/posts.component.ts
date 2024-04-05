@@ -10,6 +10,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class PostsComponent implements OnInit {
 postList: any;
 public postForm!:  FormGroup;
+selectPost: any;
+public  title: string = ''
 
 constructor (private postService: HomeService, private fb: FormBuilder ){}
   
@@ -37,9 +39,29 @@ getPostData(){
     this.postService.deletePost(id).subscribe();
   }
 
+  updatedPost(selectedPost:any){
+    this.title  = 'Update Post'
+    this.selectPost = selectedPost;
+    this.postForm.patchValue({
+      title: selectedPost.title,
+      body: selectedPost.body,
+      tags: selectedPost.tags,
+      reactions: selectedPost.reactions
+    })
+  }
+
+  add(){
+    this.title  = 'Add Post'
+  }
+
   onSubmit(){
-    console.log(this.postForm?.value, "AJ")
-    this.postService.addPost(this.postForm.value).subscribe();
+    if (this.selectPost.id) {
+      this.postService.updatePost(this.postForm.value, this.selectPost.id).subscribe();
+      this.postForm.reset();
+    } else {
+      this.postService.addPost(this.postForm.value).subscribe();
+      this.postForm.reset()
+    }
   }
 
 }

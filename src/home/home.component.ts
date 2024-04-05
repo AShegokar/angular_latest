@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit {
 
   public productList: any;
   public productForm!: FormGroup;
-  selectedproduct: any;
+  selectproduct: any;
   public title: string = "";
 
   constructor(private homeService: HomeService, private fb: FormBuilder) {}
@@ -60,8 +60,8 @@ export class HomeComponent implements OnInit {
   }
 
   onSubmit() {
-    if(this.selectedproduct.id) {
-      this.homeService.updateProduct(this.productForm.value, this.selectedproduct.id).subscribe();
+    if(this.selectproduct.id) {
+      this.homeService.updateProduct(this.productForm.value, this.selectproduct.id).subscribe();
       this.productForm.reset();
     } else {
       this.homeService.addProduct(this.productForm.value).subscribe();
@@ -69,9 +69,9 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  updateproduct(selectedProduct: any) {
+  updatedproduct(selectedProduct: any) { // how to  add clg here to see what  value is coming
     this.title = "Update product"
-    this.selectedproduct = selectedProduct;
+    this.selectproduct = selectedProduct;
     this.productForm.patchValue({
       title: selectedProduct.title,
       price: selectedProduct.price,

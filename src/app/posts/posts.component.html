@@ -17,8 +17,9 @@
             <td>{{post.tags}}</td>
             <td>{{post.reactions}}</td>
             <td class="buttons">
-                <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Add</button>
-                <button class="btn btn-warning" (click)="deletePostData(post.id)">Delete</button>
+                <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo" (click)="add()">Add</button>
+                <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo" (click)="updatedPost(post)">Update</button>
+                <button class="btn btn-danger" (click)="deletePostData(post.id)">Delete</button>
             </td>
         </tr>
     </tbody>
@@ -29,7 +30,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Post Items</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">{{title}}</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
