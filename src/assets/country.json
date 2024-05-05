@@ -1,0 +1,39 @@
+{
+    "countries": [
+      {
+        "name": "United States",
+        "code": "US",
+        "capital": "Washington, D.C.",
+        "population": 60000,
+        "language": "English"
+      },
+      {
+        "name": "United Kingdom",
+        "code": "GB",
+        "capital": "London",
+        "population": 20000,
+        "language": "English"
+      },
+      {
+        "name": "France",
+        "code": "FR",
+        "capital": "Paris",
+        "population": 40000,
+        "language": "French"
+      },
+      {
+        "name": "Germany",
+        "code": "DE",
+        "capital": "Berlin",
+        "population": 65000,
+        "language": "German"
+      },
+      {
+        "name": "China",
+        "code": "CN",
+        "capital": "Beijing",
+        "population": 80000,
+        "language": "Mandarin"
+      }
+    ]
+  }

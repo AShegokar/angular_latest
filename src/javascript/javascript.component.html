@@ -1,0 +1,37 @@
+<p>javascript works!</p>
+
+<form [formGroup]="muldivForm">
+    <label>1st Num: </label>
+    <input formControlName="firstnum" />
+    <label>2nd Num: </label>
+    <input formControlName="secondnum" />
+    <button type="button" (click)="multiply()">Multiply</button>
+    <button type="button" (click)="dividedBy()">Divided By</button>
+</form>
+
+<p>Result : {{value}}</p>
+
+<!-- <p>Each data less than 60000 {{filterData | json}}</p> -->
+
+<div *ngFor="let country of filterData">
+    <p>{{country.name}}</p>
+</div>
+
+<div>
+    Name : <p *ngIf="loggedInPerson === 'Ajinkya'">{{loggedInPerson}}</p>
+</div>
+
+<div *ngFor="let item of sampleJson">
+   <p *ngIf="item.isAdmin === true && item.age > 28">{{item.id}} . {{item.name}}</p>  
+   <button *ngIf="item.isAdmin === true && item.age > 28">Submit</button>
+</div>
+
+<div *ngFor="let item of users">
+    <div [ngSwitch]="item.role">
+        <div *ngSwitchCase="'admi'">{{item.name}} You have full access.</div>
+        <div *ngSwitchCase="'user'">{{item.name}} You have limited access.</div>
+        <div *ngSwitchCase="'moderator'">{{item.name}} You have additional priviledges.</div>
+
+        <div *ngSwitchDefault>output2</div>
+    </div>
+</div>

@@ -39,4 +39,8 @@ export class HomeService {
   updatePost(post:any, id:any): Observable<any>{
     return this.http.put(`https://dummyjson.com/posts/${id}`, post);
   }
+
+  getCountryData(): Observable<any> {
+    return this.http.get('/assets/country.json');
+  }
 }

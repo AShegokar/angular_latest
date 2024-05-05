@@ -12,6 +12,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { HomeService } from './services/home.service';
 import { PostsComponent } from './posts/posts.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { JavascriptComponent } from 'src/javascript/javascript.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     WildCardComponent,
     NavbarComponent,
     AboutComponent,
-    PostsComponent
+    PostsComponent,
+    JavascriptComponent
   ],
   imports: [
     BrowserModule,
