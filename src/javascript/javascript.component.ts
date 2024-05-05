@@ -193,11 +193,9 @@ export class JavascriptComponent implements OnInit {
 
   eachData() {
     this.homeService.getCountryData().subscribe((res: any) => {
-      
       this.filterData = res.countries.filter((countryData: any) => {
         return countryData.population > 40000 && countryData.name !== 'Germany';
       })
-
     });
   }
 
