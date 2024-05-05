@@ -6,3 +6,4 @@
 *.js.map
 
 .angular/cache/**
+.angular/cache

@@ -41,6 +41,10 @@ export class HomeService {
   }
 
   getCountryData(): Observable<any> {
-    return this.http.get('/assets/country.json');
+    return this.http.get('./assets/country.json');
+  }
+
+  getItemsData(): Observable<any> {
+    return this.http.get('./assets/items.json');
   }
 }
