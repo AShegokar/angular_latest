@@ -1,1 +1,22 @@
 <p>about works!</p>
+
+<div *ngFor="let item of filterData">
+    <p>{{item.title}}</p>
+</div>
+
+<div>
+    Name: <p *ngIf="loggedInPerson === 'AJ'">{{loggedInPerson}}</p>
+</div>
+
+<div *ngFor="let item of dumyJson">
+    <p *ngIf="item.price > 25 && item.isAdmin === true">{{item.country}}</p>
+</div>
+
+<div *ngFor="let item of teams">
+    <div [ngSwitch]="item.result">
+        <div *ngSwitchCase="'Winner'">{{item.name}} team is  Winner.</div>
+        <div *ngSwitchCase="'Ti'">{{item.name}} match tie.</div>
+        <div *ngSwitchCase="'Lost'">{{item.name}} team is  lost.</div>
+        <div *ngSwitchDefault>No Result (Default Message)</div>
+    </div>
+</div>

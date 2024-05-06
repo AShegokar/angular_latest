@@ -8,6 +8,20 @@ import { HomeService } from 'src/app/services/home.service';
 })
 export class AboutComponent {
   filterData: any;
+  loggedInPerson: string = "AJ";
+
+  dumyJson = [
+    {id: 1, country : 'India', isAdmin: true, price: 20},
+    {id: 2, country : 'USA', isAdmin: false, price: 25},
+    {id: 3, country : 'Australia', isAdmin: true, price:30},
+    {id: 4, country : 'Africa', isAdmin: false, price: 35},
+  ];
+
+  teams = [
+    { name: 'India', result: 'Winner' },
+    { name: 'Africa', result: 'Tie' },
+    { name: 'Australia', result: 'Lost' }
+  ];
 
   ngOnInit(): void {
     this.filterItemsData();
