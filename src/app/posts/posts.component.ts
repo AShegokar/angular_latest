@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HomeService } from '../services/home.service';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { catchError, throwError } from 'rxjs';
 
 @Component({
   selector: 'app-posts',
@@ -11,7 +12,7 @@ export class PostsComponent implements OnInit {
 postList: any;
 public postForm!:  FormGroup;
 selectPost: any;
-public  title: string = ''
+public  title1: string = ''
 
 constructor (private postService: HomeService, private fb: FormBuilder ){}
   
@@ -22,15 +23,22 @@ ngOnInit(): void {
   
 getPostForm(){
   this.postForm = this.fb.group({
-    title: [''],
+    title: ['', Validators.required, Validators.maxLength(5)],
     body: [''],
     tags: [''],
     reactions: ['']
   })
 }
 
+get title() {
+  return this.postForm.get('title');
+}
+
 getPostData(){
-    this.postService.getPosts().subscribe((res: any) =>{
+    this.postService.getPosts().pipe(catchError(error => {
+      console.error(error)
+      return throwError("Something went wrong!");
+    })).subscribe((res: any) =>{
     this.postList = res.posts; 
   })
 }
@@ -40,7 +48,7 @@ getPostData(){
   }
 
   updatedPost(selectedPost:any){
-    this.title  = 'Update Post'
+    this.title1  = 'Update Post'
     this.selectPost = selectedPost;
     this.postForm.patchValue({
       title: selectedPost.title,
@@ -51,7 +59,7 @@ getPostData(){
   }
 
   add(){
-    this.title  = 'Add Post'
+    this.title1  = 'Add Post'
   }
 
   onSubmit(){

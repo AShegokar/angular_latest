@@ -37,7 +37,14 @@
         <form [formGroup]="postForm">
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Title:</label>
-            <input type="text" class="form-control" id="recipient-name" formControlName="title">
+            <input type="text" class="form-control" id="recipient-name" formControlName="title" required>
+            <!-- <div *ngIf="title.invalid && (title.touched || title.dirty)">
+              <p *ngIf="title.errors?.['required']">
+                Maximum length exceeded (max: 5)
+              </p>
+            </div> -->
+            
+            
           </div>
           <div class="mb-3">
             <label for="message-text" class="col-form-label">Body:</label>

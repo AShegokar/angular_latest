@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { count } from 'rxjs';
-import { HomeService } from 'src/app/services/home.service';
+import { Component, OnInit } from "@angular/core";
+import { FormBuilder, FormGroup } from "@angular/forms";
+import { HomeService } from "src/app/services/home.service";
+import { of, map, first, from, filter } from "rxjs";
 
 @Component({
   selector: "app-javascript",
@@ -16,16 +16,16 @@ export class JavascriptComponent implements OnInit {
   loggedInPerson: string = "Prakash";
 
   sampleJson = [
-    {id: 1, name : 'Ajinkya', isAdmin: true, age: 30},
-    {id: 2, name : 'Prakash', isAdmin: false, age: 28},
-    {id: 3, name : 'Surya', isAdmin: true, age:25},
-    {id: 4, name : 'Hari', isAdmin: false, age: 28},
+    { id: 1, name: "Ajinkya", isAdmin: true, age: 30 },
+    { id: 2, name: "Prakash", isAdmin: false, age: 28 },
+    { id: 3, name: "Surya", isAdmin: true, age: 25 },
+    { id: 4, name: "Hari", isAdmin: false, age: 28 },
   ];
 
   users = [
-    { name: 'Alice', role: 'admin' },
-    { name: 'Bob', role: 'user' },
-    { name: 'Charlie', role: 'moderator' }
+    { name: "Alice", role: "admin" },
+    { name: "Bob", role: "user" },
+    { name: "Charlie", role: "moderator" },
   ];
 
   ngOnInit(): void {
@@ -46,6 +46,11 @@ export class JavascriptComponent implements OnInit {
     this.removeSpacesfromstartingandEndingOfString();
     this.eachData();
     this.mapdata();
+    this.forEachdata();
+    this.range(50, 70);
+    this.sumDiff(6, 9);
+    this.checkinputs(2, 2, 5);
+    this.getOperatorsMethod();
   }
 
   constructor(private fb: FormBuilder, private homeService: HomeService) {}
@@ -194,19 +199,95 @@ export class JavascriptComponent implements OnInit {
   eachData() {
     this.homeService.getCountryData().subscribe((res: any) => {
       this.filterData = res.countries.filter((countryData: any) => {
-        return countryData.population > 40000 && countryData.name !== 'Germany';
-      })
+        return countryData.population > 40000 && countryData.name !== "Germany";
+      });
     });
   }
 
   mapdata() {
-   this.homeService.getCountryData().subscribe((res: any) => {
-      res.countries.map((country :any, index: any) => {
-        let data = {...country, population: country.population > 20000 ? country.population * 2 : country.population, id: index + 1}
+    this.homeService.getCountryData().subscribe((res: any) => {
+      res.countries.map((country: any, index: any) => {
+        let data = {
+          ...country,
+          population:
+            country.population > 20000
+              ? country.population * 2
+              : country.population,
+          id: index + 1,
+        };
         console.log(data);
-      })
-    })}
-    
-    
-}
+      });
+    });
+  }
 
+  forEachdata() {
+    this.homeService.getCountryData().subscribe((res: any) => {
+      let countries = res.countries.forEach((country: any, index: any) => {
+        let data = {
+          ...country,
+          population:
+            country.population > 20000
+              ? country.population * 2
+              : country.population,
+          id: index + 1,
+        };
+        console.log(data, "countries");
+        return data;
+      });
+      console.log(countries, "countries");
+    });
+  }
+
+  range(a: any, b: any) {
+    let sum = a + b;
+    if (sum >= 50 && sum <= 80) {
+      console.log(60);
+    } else {
+      console.log(80);
+    }
+  }
+
+  sumDiff(a: any, b: any) {
+    let sumDiff = a + b || a - b;
+    if (a === 8 || b === 8 || sumDiff === 8) {
+      console.log(true);
+    } else {
+      console.log(false);
+    }
+  }
+
+  checkinputs(a: any, b: any, c: any) {
+    let check = a === b && b === c;
+    let checkThree = a === b || b === c || a === c;
+    if (check) {
+      console.log(30);
+    } else if (checkThree) {
+      console.log(40);
+    } else {
+      console.log(20);
+    }
+  }
+
+  getOperatorsMethod() {
+    of(1, 2, 3)
+      .pipe(map((x) => x * x))
+      .subscribe((v) => {
+        console.log(v);
+      });
+
+    of(1, 2, 3)
+      .pipe(first())
+      .subscribe((v) => {
+        console.log(v);
+      });
+  }
+
+  getFromMethod() {
+    const numbers = from([1, 2, 3, 4, 5]);
+    const squaredNumbers = numbers.pipe(
+      filter((x) => x % 2 === 0), // Filter out odd numbers
+      map((x) => x * x) // Square the even numbers
+    );
+    squaredNumbers.subscribe((result) => console.log(result)); // Output: 4, 16
+  }
+}

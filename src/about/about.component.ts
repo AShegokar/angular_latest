@@ -22,6 +22,7 @@ export class AboutComponent {
     { name: 'Africa', result: 'Tie' },
     { name: 'Australia', result: 'Lost' }
   ];
+  mapData: any;
 
   ngOnInit(): void {
     this.filterItemsData();
@@ -40,12 +41,14 @@ export class AboutComponent {
     });
   }
 
-  mapItemsData(){
+  mapItemsData() {
     this.homeService.getItemsData().subscribe((res:any) => {
-      res.items.map((itemData:any) => {
-        let data = {...itemData, price: itemData.price > 600 ? itemData.price * 2 : itemData.price }
-        console.log(data)
+      this.mapData = res.items.map((itemData:any) => {
+        return {...itemData, price: itemData.price > 600 ? itemData.price * 2 : itemData.price }
+      }).filter((res: any) => {
+        return res.price > 600;
       })
+      console.log(this.mapData)
     })
   }
   
