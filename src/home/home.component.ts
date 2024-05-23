@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HomeService } from 'src/app/services/home.service';
 
 interface Product {
@@ -44,14 +44,29 @@ export class HomeComponent implements OnInit {
 
   getFormValues () {
     this.productForm = this.fb.group({
-      title: [''],
-      price: [''],
+      title: ['', [Validators.required, Validators.maxLength(5)]],
+      price: ['AJ'],
       dp: [''],
       rating:[''],
       category: [''],
       description: ['']
     })
   }
+
+  get titleValue() {
+    return this.productForm.get('title');
+
+  }
+  
+  // getErrorMessage() {
+  //   const control = this.titleValue ;
+  //   if (control.hasError('required')) {
+  //     return 'Name is required';
+  //   } else if (control.hasError('minlength')) {
+  //     return ⁠ Name must be at least ${control.errors?.minlength.requiredLength} characters long ⁠;
+  //   }
+  //   return '';
+  // }
 
   getProductsData() {
     this.homeService.getProducts().subscribe((res: any) => {
@@ -60,6 +75,9 @@ export class HomeComponent implements OnInit {
   }
 
   onSubmit() {
+    console.log(this.productForm.get('dp')?.value);
+    console.log(this.productForm.value);
+    
     if(this.selectproduct.id) {
       this.homeService.updateProduct(this.productForm.value, this.selectproduct.id).subscribe();
       this.productForm.reset();

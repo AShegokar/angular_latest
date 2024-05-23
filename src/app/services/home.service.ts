@@ -13,7 +13,7 @@ export class HomeService {
   }
 
   getPosts(): Observable<any>{
-    return this.http.get('https://dummyjson.com/pos');
+    return this.http.get('https://dummyjson.com/posts');
   }
 
   deleteProduct(id: number): Observable<any> {

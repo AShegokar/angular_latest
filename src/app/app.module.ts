@@ -13,6 +13,9 @@ import { HomeService } from './services/home.service';
 import { PostsComponent } from './posts/posts.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { JavascriptComponent } from 'src/javascript/javascript.component';
+import { ClientComponent } from 'src/client/client/client.component';
+import { ClientInfoComponent } from 'src/client/client-info/client-info.component';
+import { ClientDataComponent } from 'src/client/client-data/client-data.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,10 @@ import { JavascriptComponent } from 'src/javascript/javascript.component';
     NavbarComponent,
     AboutComponent,
     PostsComponent,
-    JavascriptComponent
+    JavascriptComponent,
+    ClientComponent,
+    ClientInfoComponent,
+    ClientDataComponent
   ],
   imports: [
     BrowserModule,
