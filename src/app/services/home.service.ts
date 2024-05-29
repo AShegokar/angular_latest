@@ -1,11 +1,19 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, catchError, throwError } from 'rxjs';
+import { Observable, Subject, catchError, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class HomeService {
+  // 3rd way of sending data 
+  private dataSubject = new Subject<string>();
+  data$ = this.dataSubject.asObservable(); // if data is coming from observable then add $ 
+
+  sendData(data: string) {
+    this.dataSubject.next(data);
+  }
+
   constructor(private http: HttpClient) {}
 
   getProducts(): Observable<any> {

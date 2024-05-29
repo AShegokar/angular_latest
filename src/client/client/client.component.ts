@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { HomeService } from 'src/app/services/home.service';
+import { ClientDataComponent } from '../client-data/client-data.component';
 
 @Component({
   selector: 'app-client',
@@ -7,6 +8,7 @@ import { HomeService } from 'src/app/services/home.service';
   styleUrls: ['./client.component.scss']
 })
 export class ClientComponent {
+  @ViewChild(ClientDataComponent) child! : ClientDataComponent;
 
   constructor(private homeService: HomeService) {}
 
@@ -26,8 +28,27 @@ public clientData = [
   {id: 5, name: 'Bhuvi', age: 34}
 ]
 
+public clientMock = [
+  {id: 1,age: 23, price: 2, Name: 'Satish' },
+  {id: 2,age: 30, price: 6, Name: 'AJ' },
+  {id: 3,age: 35, price: 4, Name: 'Nitin' },
+  {id: 4,age: 40, price: 1, Name: 'Andrew' }
+]
+
+
+
 deleteProduct(data: any) {
   this.homeService.deleteProduct(data.id).subscribe();
+}
+
+ngAfterViewInit() {
+  console.log(this.child.childData);
+  console.log(this.child.childDataUsingViewchild);
+  
+}
+
+sendData() {
+  this.homeService.sendData("DATA from Parent component");
 }
 
 }

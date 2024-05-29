@@ -29,7 +29,7 @@ import { ClientDataComponent } from 'src/client/client-data/client-data.componen
     JavascriptComponent,
     ClientComponent,
     ClientInfoComponent,
-    ClientDataComponent
+    ClientDataComponent, 
   ],
   imports: [
     BrowserModule,
