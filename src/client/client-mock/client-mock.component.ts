@@ -8,8 +8,11 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class ClientMockComponent {
 @Input() mock: any;
 
+@Output() deleteMock = new EventEmitter();
 
-
+  deleteData(event: any) {
+   this.deleteMock.emit(event);
+  }
 
 
 }

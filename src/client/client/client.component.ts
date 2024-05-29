@@ -35,7 +35,11 @@ public clientMock = [
   {id: 4,age: 40, price: 1, Name: 'Andrew' }
 ]
 
-
+deleteMockFromService(data: any) {
+  console.log(data, "===");
+  this.homeService.deleteProduct(data.id).subscribe()
+  
+}
 
 deleteProduct(data: any) {
   this.homeService.deleteProduct(data.id).subscribe();
