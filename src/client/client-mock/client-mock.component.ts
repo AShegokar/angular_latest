@@ -14,5 +14,11 @@ export class ClientMockComponent {
    this.deleteMock.emit(event);
   }
 
+  // 2nd another way of passing data to parent from child
+  public clientMockData = [
+    {id:1, age: 5, Name:'Dhoni'},
+    {id:2, age: 6, Name:'Srinath'}
+  ]
+
 
 }

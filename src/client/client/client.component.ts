@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { HomeService } from 'src/app/services/home.service';
 import { ClientDataComponent } from '../client-data/client-data.component';
+import { ClientMockComponent } from '../client-mock/client-mock.component';
 
 @Component({
   selector: 'app-client',
@@ -9,6 +10,7 @@ import { ClientDataComponent } from '../client-data/client-data.component';
 })
 export class ClientComponent {
   @ViewChild(ClientDataComponent) child! : ClientDataComponent;
+  @ViewChild(ClientMockComponent) clientSample! : ClientMockComponent; // // 2nd another way of passing data to parent from child
 
   constructor(private homeService: HomeService) {}
 
@@ -45,9 +47,10 @@ deleteProduct(data: any) {
   this.homeService.deleteProduct(data.id).subscribe();
 }
 
-ngAfterViewInit() {
+ngAfterViewInit() { // lifecycle hook in angular for view child &  // 2nd another way of passing data to parent from child
   console.log(this.child.childData);
   console.log(this.child.childDataUsingViewchild);
+  console.log(this.clientSample.clientMockData);  // // 2nd another way of passing data to parent from child 
   
 }
 
