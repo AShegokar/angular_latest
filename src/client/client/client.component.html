@@ -6,3 +6,7 @@
 <app-client-mock [mock]="clientMock" (deleteMock)="deleteMockFromService($event)"></app-client-mock>
 
 <button (click)="sendData()">Click me</button>
+
+<!-- 3rd way of sending data from one comp to multiple comp. It doesn't matter abt parent or child. -->
+<button (click)="mockingData()">Client Mock Data</button>
+

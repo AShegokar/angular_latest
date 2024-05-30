@@ -14,6 +14,11 @@ export class HomeService {
     this.dataSubject.next(data);
   }
 
+  // 3rd way of sending data with adding line 10 as well above.
+  clientMockData(data: string){
+    this.dataSubject.next(data);
+  }
+
   constructor(private http: HttpClient) {}
 
   getProducts(): Observable<any> {

@@ -58,4 +58,8 @@ sendData() {
   this.homeService.sendData("DATA from Parent component");
 }
 
+mockingData() {
+  this.homeService.clientMockData("T20 World Cup 2024");
+}
+
 }
