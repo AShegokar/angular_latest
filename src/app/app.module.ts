@@ -17,6 +17,7 @@ import { ClientComponent } from 'src/client/client/client.component';
 import { ClientInfoComponent } from 'src/client/client-info/client-info.component';
 import { ClientDataComponent } from 'src/client/client-data/client-data.component';
 import { ClientMockComponent } from 'src/client/client-mock/client-mock.component';
+import { ClientFormComponent } from 'src/client/client-form/client-form.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { ClientMockComponent } from 'src/client/client-mock/client-mock.componen
     ClientComponent,
     ClientInfoComponent,
     ClientDataComponent, 
-    ClientMockComponent
+    ClientMockComponent,
+    ClientFormComponent
   ],
   imports: [
     BrowserModule,

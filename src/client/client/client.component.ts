@@ -62,4 +62,9 @@ mockingData() {
   this.homeService.clientMockData("T20 World Cup 2024");
 }
 
+clientFormDataFromChild(formdata: any) {
+  this.homeService.addPost(formdata).subscribe();
+  console.log(formdata, "=== it's from parnet");
+}
+
 }
