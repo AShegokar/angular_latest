@@ -1,1 +1,9 @@
-<p>contact works!</p>
+
+
+<div *ngFor="let access of data">
+    <div class="contact">
+        <p>{{access.name}}</p>
+        <button *ngIf="access.isAdmin === true && loggedInUser === access.name">Click me</button>
+    </div>
+
+</div>

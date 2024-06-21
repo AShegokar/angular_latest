@@ -6,5 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./contact.component.scss']
 })
 export class ContactComponent {
+  public loggedInUser: string = 'Ajinkya';
+  // public loggedInUser: string = 'PK';
+
+  public data: any = [
+    {id: 1, name: 'Ajinkya', isAdmin: true},
+    {id: 2, name: 'kohli', isAdmin: false},
+    {id: 3, name: 'Dhoni', isAdmin: false}
+  ]
 
 }

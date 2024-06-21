@@ -33,7 +33,7 @@ import { ClientFormComponent } from 'src/client/client-form/client-form.componen
     ClientInfoComponent,
     ClientDataComponent, 
     ClientMockComponent,
-    ClientFormComponent
+    ClientFormComponent,
   ],
   imports: [
     BrowserModule,
