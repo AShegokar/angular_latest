@@ -5,5 +5,18 @@
         <p>{{access.name}}</p>
         <button *ngIf="access.isAdmin === true && loggedInUser === access.name">Click me</button>
     </div>
-
 </div>
+
+<h2>{{loggedInUser  | uppercase}} </h2>
+<h2>{{loggedInUser  | lowercase}} </h2>
+<h2>{{loggedInUser1  | titlecase}} </h2>
+<h2>{{loggedInUser1  | titlecase}} </h2>
+<h2>{{123.44 | currency: 'INR'}}</h2>
+<h2>{{date | date: 'fullDate'}}</h2>
+
+
+<h2>{{date | datepipe}}</h2>
+
+<h2>{{0.56 | percent}}</h2>
+
+<h2>{{0.56234444 | percent: '1.2-2'}}</h2>

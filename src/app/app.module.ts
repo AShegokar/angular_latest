@@ -18,6 +18,7 @@ import { ClientInfoComponent } from 'src/client/client-info/client-info.componen
 import { ClientDataComponent } from 'src/client/client-data/client-data.component';
 import { ClientMockComponent } from 'src/client/client-mock/client-mock.component';
 import { ClientFormComponent } from 'src/client/client-form/client-form.component';
+import { DatePipe1 } from './date.pipe';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { ClientFormComponent } from 'src/client/client-form/client-form.componen
     ClientDataComponent, 
     ClientMockComponent,
     ClientFormComponent,
+    DatePipe1,
   ],
   imports: [
     BrowserModule,

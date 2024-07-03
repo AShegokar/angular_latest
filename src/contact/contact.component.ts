@@ -7,6 +7,11 @@ import { Component } from '@angular/core';
 })
 export class ContactComponent {
   public loggedInUser: string = 'Ajinkya';
+
+  public loggedInUser1: string = 'ajinkya rahane';
+
+  public date = new Date();
+
   // public loggedInUser: string = 'PK';
 
   public data: any = [
