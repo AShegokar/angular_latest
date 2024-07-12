@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup } from "@angular/forms";
+import { FormBuilder, FormControl, FormGroup } from "@angular/forms";
 import { HomeService } from "src/app/services/home.service";
-import { of, map, first, from, filter } from "rxjs";
+import { of, map, first, from, filter, debounceTime } from "rxjs";
 
 @Component({
   selector: "app-javascript",
@@ -51,9 +51,29 @@ export class JavascriptComponent implements OnInit {
     this.sumDiff(6, 9);
     this.checkinputs(2, 2, 5);
     this.getOperatorsMethod();
+    this.gradeCheck(98);
   }
 
-  constructor(private fb: FormBuilder, private homeService: HomeService) {}
+
+  searchControl = new FormControl('');
+  searchTerm!: string;
+
+  constructor(private fb: FormBuilder, private homeService: HomeService) {
+    // Debounce input changes
+    this.searchControl.valueChanges
+      .pipe(debounceTime(1000)) // wait 1000ms after the last event before emitting last event
+      .subscribe((value: any) => {
+        this.searchTerm = value;
+    // console.log('Searching for:', this.searchTerm);
+        this.search(value);
+      });
+  }
+
+  search(term: string): void {
+    console.log('Searching for:', term);
+    // Perform the search operation
+  }
+
 
   //   Write a JavaScript program to display the current day and time in the following format.
   // Sample Output : Today is : Tuesday.
@@ -290,4 +310,15 @@ export class JavascriptComponent implements OnInit {
     );
     squaredNumbers.subscribe((result) => console.log(result)); // Output: 4, 16
   }
+
+  gradeCheck(marks: any) {
+    if (marks >= 89 && marks <= 100) {
+      console.log("A+");
+    } else {
+      console.log("B");
+    }
+  }
 }
+
+
+

@@ -9,6 +9,12 @@
     <button type="button" (click)="dividedBy()">Divided By</button>
 </form>
 
+<div>
+    <h3>Debounce Input</h3>
+    <input [formControl]="searchControl" placeholder="Type to search...">
+    <p *ngIf="searchTerm">Searching for: {{ searchTerm }}</p>
+  </div>
+
 <p>Result : {{value}}</p>
 
 <!-- <p>Each data less than 60000 {{filterData | json}}</p> -->
