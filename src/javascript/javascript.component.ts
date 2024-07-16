@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormControl, FormGroup } from "@angular/forms";
 import { HomeService } from "src/app/services/home.service";
-import { of, map, first, from, filter, debounceTime } from "rxjs";
+import { of, map, first, from, filter, debounceTime, switchMap } from "rxjs";
 
 @Component({
   selector: "app-javascript",
@@ -61,18 +61,19 @@ export class JavascriptComponent implements OnInit {
   constructor(private fb: FormBuilder, private homeService: HomeService) {
     // Debounce input changes
     this.searchControl.valueChanges
-      .pipe(debounceTime(1000)) // wait 1000ms after the last event before emitting last event
+      .pipe(debounceTime(1000), switchMap((term: any) => this.homeService.getProducts())) // wait 1000ms after the last event before emitting last event
       .subscribe((value: any) => {
         this.searchTerm = value;
     // console.log('Searching for:', this.searchTerm);
-        this.search(value);
+        // this.search(value);
       });
   }
 
-  search(term: string): void {
-    console.log('Searching for:', term);
-    // Perform the search operation
-  }
+  // search(term: string): void {
+  //   console.log('Searching for:', term);
+  //   this.homeService.getProducts(term).subscribe();
+  //   // Perform the search operation
+  // }
 
 
   //   Write a JavaScript program to display the current day and time in the following format.
